@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--Informacion y metadatos del sitio web-->    
+    <meta charset="UTF-8">  
+    <!--Diccionario de caracteres-->    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Con esta meta, le decimos al navegar que adapte nuestro contenido a dispositivos moviles-->
+    <title>Filtros</title>
+    <!--Titulo-->
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!--Cargando librerias para poder escribir ecuaciones-->
+
+    <!--<link rel="stylesheet" href="diseño_css/reset.css">-->
+    <link rel="stylesheet" href="diseño_css/css_filtros.css">
+    <!--Relacion con la hoja de estilos CSS3-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,200&display=swap" rel="stylesheet">
+    <!--Cambiando la fuente de la letra-->
+</head> 
+
+<body>
+    <header><!--Seccion de encabezado del sitio, en caso de necesitarlo-->
+        <nav>
+            <!--Barra de navegacion/ banner-->
+        </nav>
+    </header>
+
+    <main><!--Cuerpo principal de la pagina-->
+        <section class="introduccion">
+            <div class="informacion">
+                <h2>FILTROS</h2>
+                <p>Los filtros son componentes fundamentales en el procesamiento de señales y sistemas de comunicación. Su funcionamiento se basa en la atenuación o eliminación selectiva de ciertas frecuencias de una señal. Pueden estar compuestos por componentes electrónicos o ser implementados mediante algoritmos digitales.</p>
+                <p>La respuesta en frecuencia de un filtro describe cómo afecta a las diferentes frecuencias de una señal. Puede haber regiones de paso, donde las frecuencias se dejan pasar con poca o ninguna atenuación, y regiones de rechazo, donde las frecuencias se atenúan o eliminan. La forma y amplitud de la respuesta en frecuencia determinan el comportamiento del filtro.</p>
+                <p>Existen filtros analógicos y digitales. </p>
+                <ul class="lista_tipos"> 
+                    <li class="items">
+                        Los filtros analógicos operan directamente en señales analógicas y se basan en componentes electrónicos.
+                    </li> 
+                    <li class="items">
+                        Los filtros digitales utilizan algoritmos de procesamiento de señales y ofrecen mayor flexibilidad y facilidad de implementación.
+                    </li>
+                </ul>
+                <p>Además de los filtros pasa altas, pasa bajas y pasa banda, de los cuales habla este trabajo, existen otros tipos de filtros como los de rechazo, que atenúan o eliminan una banda de frecuencias específica; los de fase lineal, que mantienen la relación temporal de las frecuencias; y los adaptativos, que se ajustan automáticamente según las condiciones cambiantes del entorno.  </p>
+                <p>El diseño de un filtro implica determinar parámetros como la frecuencia de corte, la pendiente de atenuación, la selectividad y la distorsión. Esto depende de la aplicación específica.</p>
+            </div>
+        </section>
+        <section class="pasa_altas">
+            <div class="informacion">
+                <h3>HIGH PASS FILTER (HPF) - FILTRO PASA ALTAS</h3>
+                <p>Un filtro pasa altas permite el paso de frecuencias superiores a una cierta frecuencia de corte, mientras que atenúa o elimina las frecuencias más bajas. Es útil cuando se desea enfatizar o analizar las componentes de alta frecuencia de una señal y atenuar el ruido o las componentes de baja frecuencia. Estos filtros se utilizan en aplicaciones como la eliminación de ruido de baja frecuencia en sistemas de audio, la separación de señales de voz en sistemas de telecomunicaciones o el análisis de componentes de alta frecuencia en señales de radio.   Ejemplo</p>
+            </div>
+            <div class="ejemplo">
+                <div class="calculos">
+                    <h4 class="ejemplo_instrucciones">\( H(s) = \frac{s}{(s + 100)} \)</h4>
+                    <p class="paso_a_paso">\( H(jw) = \frac{jw}{(jw + 100)} \)</p>
+                    <h5>Para obtener su magnitud (medida en decibelios)</h5>
+                    <p class="paso_a_paso">HdB = 20 log(| H(jw) |)</p>
+                    <p class="paso_a_paso">HdB = 20 log(w) - 20 log( \( \sqrt{{w^2 + 100^2}} \) )</p>
+                    <h5>Para obtener su angulo (medido en grados)</h5>
+                    <p class="paso_a_paso">Arg H(jw) = \(\tan^{-1}\left(\frac{Im(H(jw))}{Re(H(jw))}\right)\)</p>
+                    <p class="paso_a_paso">Arg H(jw) = - \(\tan^{-1}\left(\frac{w}{100}\right)\)</p>
+                    <ul class="rangos">
+                        <li class="intervalo">
+                            <p class="paso_a_paso"> Cuando w << 100 </p>
+                            <p class="paso_a_paso">HdB = 20 log(w)</p>
+                            <p class="paso_a_paso">Arg H(jw) = 90°</p>
+                        </li>
+                        <li class="intervalo">
+                            <p class="paso_a_paso"> Cuando w >> 100 </p>
+                            <p class="paso_a_paso">HdB = 0</p>
+                            <p class="paso_a_paso">Arg H(jw) = 0°</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="graficas">
+                    <img src="imagenes/bode_altas.png" alt="bode para un filtro pasa altas">
+                </div>
+            </div>
+        </section>
+        <section class="pasa_baja">
+            <div class="informacion">
+                <h3>LOW PASS FILTER (LPS) - FILTRO PASA BAJAS</h3>
+                <p>Por otro lado, un filtro pasa bajas permite el paso de frecuencias inferiores a una frecuencia de corte específica y atenúa o elimina las frecuencias más altas. Este tipo de filtro se utiliza cuando se desea eliminar el ruido de alta frecuencia de una señal, suavizar una señal o extraer las componentes de baja frecuencia. Algunas aplicaciones comunes de los filtros pasa bajas incluyen la mejora de la calidad de audio en sistemas de reproducción, la eliminación de interferencias de alta frecuencia en sistemas de adquisición de datos o la recuperación de señales de baja frecuencia en sistemas de monitoreo.  Ejemplo:</p>   
+            </div>
+            <div class="ejemplo">
+                <div class="calculos">
+                    <h4 class="ejemplo_instrucciones">\( H(s) = \frac{1000}{{(s + 10)(s + 100)}} \)</h4>
+                    <p class="paso_a_paso">\( H(jw) = \frac{1000}{{(jw + 10)(jw + 100)}} \)</p>
+
+                    <h5>Para obtener su magnitud (medida en decibelios)</h5>
+                    <p class="paso_a_paso">HdB = 20 log(| H(jw) |)</p>
+                    <p class="paso_a_paso">HdB = 20 log(1000) - 20 log( \( \sqrt{{w^2 + 10^2}} \) )-20 log( \( \sqrt{{w^2 + 100^2}} \) )</p>
+
+                    <h5>Para obtener su angulo (medido en grados)</h5>
+                    <p class="paso_a_paso">Arg H(jw) = \(\tan^{-1}\left(\frac{Im(H(jw))}{Re(H(jw))}\right)\)</p>
+                    <p class="paso_a_paso">Arg H(jw) = - \(\tan^{-1}\left(\frac{w}{10}\right)\) - \(\tan^{-1}\left(\frac{w}{100}\right)\)</p>
+                    <ul class="rangos">
+                        <li class="intervalo">
+                            <p class="paso_a_paso"> Cuando w << 100 </p>
+                            <p class="paso_a_paso">HdB = 0</p>
+                            <p class="paso_a_paso">Arg H(jw) = 0°</p>
+                        </li>
+                        <li class="intervalo">
+                            <p class="paso_a_paso"> Cuando 10 << w << 100 </p>
+                            <p class="paso_a_paso">HdB = 20 - 20 log(w) </p>
+                            <p class="paso_a_paso">Arg H(jw) = - 90°</p>
+                        </li>
+                        <li class="intervalo">
+                            <p class="paso_a_paso"> Cuando w >> 100 </p>
+                            <p class="paso_a_paso">HdB = 60 - 40 log(w)</p>
+                            <p class="paso_a_paso">Arg H(jw) = - 180°</p>
+                        </li>
+                    </ul>
+                </div>                   
+                <div class="graficas">
+                <img src="imagenes/bode_bajas.png" alt="bode para un filtro pasa altas">
+                </div>
+            </div>
+        </div>
+        </section>
+        <section class="pasa_banda">
+            <div class="informacion">
+            <h3>FILTRO PASA BANDAS</h3>
+            <p>Finalmente, un filtro pasa banda permite el paso de un rango específico de frecuencias y atenúa o bloquea las frecuencias fuera de ese rango. Este tipo de filtro es útil cuando se desea seleccionar o extraer una banda de frecuencias específica de una señal, mientras se rechazan las frecuencias fuera de ese rango. Se utiliza en aplicaciones como la demodulación de señales de radio, la separación de canales en sistemas de audio estéreo o la extracción de componentes específicos en el análisis de señales biomédicas.   Ejemplo: </p>
+            </div>
+            <div class="ejemplo">
+                <div class="calculos">
+                <h4 class="ejemplo_instrucciones">\( H(s) = \frac{100s}{{(s + 1)(s + 100)}} \)</h4>
+                <p class="paso_a_paso">\( H(jw) = \frac{100jw}{{(jw + 1)(jw + 100)}} \)</p>
+
+                <h5>Para obtener su magnitud (medida en decibelios)</h5>
+                <p class="paso_a_paso">HdB = 20 log(| H(jw) |)</p>
+                <p class="paso_a_paso">HdB = 20 log(100) + 20 log(w) - 20 log( \( \sqrt{{w^2 + 1^2}} \) )-20 log( \( \sqrt{{w^2 + 100^2}} \) )</p>
+
+                <h5>Para obtener su angulo (medido en grados)</h5>
+                <p class="paso_a_paso">Arg H(jw) = \(\tan^{-1}\left(\frac{Im(H(jw))}{Re(H(jw))}\right)\)</p>
+                <p class="paso_a_paso">Arg H(jw) = 90 - \(\tan^{-1}\left(\frac{w}{1}\right)\) - \(\tan^{-1}\left(\frac{w}{100}\right)\)</p>
+                <ul class="rangos">
+                    <li class="intervalo">
+                        <p class="paso_a_paso"> Cuando w << 1 </p>
+                        <p class="paso_a_paso">HdB = 20 log(w)</p>
+                        <p class="paso_a_paso">Arg H(jw) = 90°</p>
+                    </li>
+                    <li class="intervalo">
+                        <p class="paso_a_paso"> Cuando 1<< w << 100 </p>
+                        <p class="paso_a_paso">HdB = 40 + 20 log(w) - 20 log(w) - 40 </p>
+                        <p class="paso_a_paso">HdB = 0 </p>
+                        <p class="paso_a_paso">Arg H(jw) = 0°</p>
+                    </li>
+                    <li class="intervalo">
+                        <p class="paso_a_paso"> Cuando w >> 100 </p>
+                        <p class="paso_a_paso">HdB = 40 + 20 log(w) - 20 log(w) - 20 log(w)</p>
+                        <p class="paso_a_paso">HdB = 40 - 20 log(w) </p>
+                        <p class="paso_a_paso">Arg H(jw) = - 90°</p>
+                    </li>
+                </ul>
+                </div>    
+                <div class="graficas">
+                <img src="imagenes/bode_bandas.png" alt="bode para un filtro pasa altas">
+                </div>
+        </section>
+        <section class="para_matlab">
+            <h3>CODIGO DE MATLAB</h3>
+            <p>En MATLAB, puedes utilizar la función "bode()" para trazar el diagrama de Bode de una función de transferencia. A continuación se muestra un ejemplo de cómo utilizar esta función:</p>
+            <p>\[ H(s) = \frac{{As^4 + Bs^3 + Cs^2 + Ds + \text{{cte1}}}}{{Es^4 + Fs^3 + Gs^2 + Hs + \text{{cte2}}}} \]</p>
+            <p>a = coeficientes del numerador de la funcion de transferencia</p>
+            <p>a = [A B C D cte1];</p>
+            <p>b = coeficientes del denomiador de la funcion de transferencia</p>
+            <p>b = [ E F G H cte2];</p>
+            <p>Utiliza la funcion bode(a,b);</p>
+
+        </section>
+    </main>
+
+    <footer><!--pie de pagina, en caso de necesitarlo-->
+
+    </footer>
+</body>
+</html>

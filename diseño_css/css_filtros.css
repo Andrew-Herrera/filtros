@@ -1,0 +1,37 @@
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 2%;
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+p{
+    text-align: justify;
+}
+.ejemplo{
+    display: flex;
+    flex-wrap: wrap;
+}
+.calculos, .graficas {
+    width: 50%;
+}
+@media screen and (max-width: 500px) {
+    .div1, .div2 {
+        width: 100%;
+    }
+    .ejemplo{
+    flex-direction: column;
+    }
+    img {
+        width: 450px;
+        padding: 2%;
+        align-items: center;
+    }
+}
